@@ -1,0 +1,262 @@
+<html>
+	<head>
+		<title>C Cod : FAQ</title>
+		<link rel="stylesheet" type="text/css" href="ccod.css">
+	</head>
+	<body>
+			<table cellpadding=0 cellspacing=0 border=0 width=100% height=100%>
+				<td bgcolor="#dddddd"><div style="width:50px;"></div></td>
+				<td bgcolor="#999999"><div style="width:1px"></div></td>				
+				<td width=100% valign=top align=left style="padding:10px">
+					<center>
+						<div style="width:450px;"><font size=5><b>C Cod</b> - FAQ</font></div>
+						<div>Compile C on Demand</div>
+						<div id=navbar>
+							&nbsp;&nbsp;
+							<a href="index.html">about</a>&nbsp;&nbsp;
+							<a href="http://sourceforge.net/project/showfiles.php?group_id=116097">download</a>&nbsp;&nbsp;
+							<a href="documentation.html">documentation</a>&nbsp;&nbsp;
+							<a href="examples.html">examples</a>&nbsp;&nbsp;
+							<a href="faq.html">faq</a>&nbsp;&nbsp;
+						</div>
+					</center>
+					<p>
+					<b>General Questions</b><br>
+					<ol start=1>
+						<li><a href="#q1">What is C Cod?</a></li>
+						<li><a href="#q2">What is CSP?</a></li>
+						<li><a href="#q3">Is this a scripting language?</a></li>
+						<li><a href="#q4">Where can I get a copy of C Cod?</a></li>
+						<li><a href="#q5">What Operating Systems are supported?</a></li>
+						<li><a href="#q6">How do I install?</a></li>
+						<li><a href="#q7">Where are the examples?</a></li>
+					<!--</ol>
+					<b>Technical Questions</b><br>
+					<ol start=10>-->
+					<!--
+						<li><a href="#q8">Okay, this is another scripting application, and I have like... 
+							perl, php, python, and about a million sh variants already installed.  
+						    What will this *really* do that is any different?</a></li>-->
+						<li><a href="#q9">What C compatibility does C Cod provide?</a></li>
+						<li><a href="#q10">Does C Cod actually compile the code?</a></li>
+						<!--
+						<li><a href="#q11">If it's programmed in C, does this mean it's fast?</a></li>
+						<li><a href="#q12">Is there a performance hit from the compiling of the source prior to executing?</a></li>
+						<li><a href="#q13">If the source is compiled and cached, then where is the binary version stored?</a></li>
+						-->
+						<li><a href="#q14">Does C Cod support garbage collection?</a></li>
+						<li><a href="#q15">I have an old C program I wrote about 10 years ago, can C Cod execute it?</a></li>
+						<!--<li><a href="#q18">Will time_t still wrap around?</a></li>-->
+					</ol>
+			<!--
+					<b>CSP Specific Questions</b><br>
+					<ol start=20>
+						<li><a href="#q20">Why is ASP the choosen model for the CSP API?</a></li>
+						<li><a href="#q21">CSP vs PHP</a></li>
+						<li><a href="#q22">Can CSP connect to a MYSQL database?</a></li>
+						<li><a href="#q23">I like plain old CGI, how do I *not* use CSP?</a></li>
+					</ol>
+					<b>Religious Questions</b><br>
+					<ol start=30>						
+						<li><a href="#q31">I HATE C, I WANT TO USE C++!!!!</a></li>
+					</ol>
+				-->
+					</p>
+					<hr size=1>
+					
+					
+					<p><b><a name=q1><font color=#000000>(1) What is C Cod?</font></a></b><br>
+					<div class=faqans>
+				    C Cod allows for a C/C++, and Objective-C source 
+					files to be "Compiled on Demand" prior to being executed.
+					The source files are compiled and executed on 
+					the fly. This allows for C to be treated like a scripting 
+					language. But, C Cod does not actually do the compiling.
+					Rather it acts as a front-end and uses 
+					the the C compiler that is installed on the computer.  This 
+					is most often the <a href="http://gcc.gnu.org/">GNU C 
+					Compiler</a>, and therefore designed to be used with GCC.
+					</div>
+					</p><hr>
+					
+					
+					
+					<p><b><a name=q2><font color=#000000>(2) What is CSP?</font></a></b><br>
+					<div class=faqans>
+					CSP is a shared library that exposes C Cod source 
+					files to a friendly
+					<a href="http://hoohoo.ncsa.uiuc.edu/cgi/">CGI</a> API. 
+					It's modelled after
+					<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnanchor/html/activeservpages.asp">ASP</a>, 
+					and supports features such as <i>
+					Page Buffering,
+					File Uploads,
+					Sessions,
+					Cookies,
+					Inline HTML,
+					and much more. 
+					</i> It is automatically installed along-side 
+					C Cod.
+					</div>
+					</p><hr>
+					
+					
+					
+					<p><b><a name=q3><font color=#000000>(3) Is this a scripting language?</font></a></b><br>
+					<div class=faqans>
+					Yes and No.  It looks and feels like a scripting language, but performs like a compiled application.
+					</div>					
+					</p><hr>
+					
+					
+					<p><b><a name=q4><font color=#000000>(4) Where can I get a copy of C Cod?</font></a></b><br>
+					<div class=faqans>
+					There is a download link on the <a href="http://ccod.sourceforge.net">http://ccod.sourceforge.net</a> site.
+					</div>
+					</p><hr>
+					
+					
+					<p><b><a name=q5><font color=#000000>(5) What Operating Systems are supported?</font></a></b><br>
+					<div class=faqans>
+					C Cod is an ANSI C compatible application and thus it should compile on witha ANSI C compatible compilers.  
+					But it has been successfully compiled and tested on:
+					<p>
+					</p><li>Mac OS X (Darwin/PowerPC/Intel)<br>
+					</li><li>Windows (MingW/i386)<br>
+					</li><li>Linux (Linux/i386)</li>
+					</p>
+					
+					</div>
+					</p><hr>
+					
+					
+					<p><b><a name=q6><font color=#000000>(6) How do I install?</font></a></b><br>
+					<div class=faqans>
+					Download the sources from the <a href="http://ccod.sourceforge.net">http://ccod.sourceforge.net</a> site.
+					Follows the <nobr>"<code>./configure && make install</code>"</nobr> standard.<br><br>
+					For windows users, download the setup EXE binary.  
+					This will setup the <a href="http://www.mingw.org/">MingW</a> environment alongside C Cod and CSP.
+					</div>
+					</p><hr>
+					
+					
+					<p><b><a name=q7><font color=#000000>(7) Where are the examples?</font></a></b><br>
+					<div class=faqans>
+					Online at <a href="http://ccod.sourceforge.net/examples.html">http://ccod.sourceforge.net/examples.html</a>.<br>
+					In the source/binary distribution under the <code>examples</code> directory.
+					</div>
+					</p><hr>
+
+
+						
+<!--
+					<p><b><a name=q8><font color=#000000>(8) Okay, this is another scripting application, and I have like... 
+					perl, php, python, and about a million sh variants already installed.  
+					What will this *really* do that is any different?</font></a></b><br>
+					<div class=faqans>
+					Because you are programming in C.  
+					Your C Cod scripts will be exposed to thousands or more libraries and low level system calls 
+					that many other scripting/interpereted 	environments may never see.
+					Because your C Cod script is truly compiled and not interpereted, it has the potential of 
+					running circles around many of the other's.  
+					<br><br>
+					But all is not perfect with C Cod.  Some disadvantages are that C does not have high-level features
+					such as Garbage Collection.  
+					And C Cod does not expose a shell environment to the sources such the all-mighty <a href="http://www.gnu.org/software/bash/bash.html">bash</a>;  which means that you
+					will not be able to do things like <code>grep</code>ping a <code>find</code> output directly into a variable (though there
+					are workarounds using the "popen" or "system" calls).
+					
+					
+					</div>
+					</p><hr>
+-->
+					
+					<p><b><a name=q9><font color=#000000>(8) What C compatibility does C Cod provide?</font></a></b><br>
+					<div class=faqans>
+					Anything that is available to GNU C is available to C Cod.  C++ and Objective-C are also available.
+					</div>
+					</p><hr>
+					
+					
+					<p><b><a name=q10><font color=#000000>(9) Does C Cod actually compile the code?</font></a></b><br>
+					<div class=faqans>
+					No. 
+					C Cod reformats the source file to be compatible with the <a href="http://gcc.gnu.org/">GNU C Compiler</a>. 
+					It hands the compiling process off to GCC.
+					It caches and executes the compiled binary.
+					It also provides the CSP library available to CGI application.
+					</div>
+					</p><hr>
+					
+<!--
+					<p><b><a name=q11><font color=#000000>(10) If it's programmed in C, does this mean it's fast?</font></a></b><br>
+					<div class=faqans>
+					Yes.  And you can create some tight code and use optimizing flags, it can fly! 
+					</div>
+					</p><hr>
+					
+					
+					
+					<p><b><a name=q12><font color=#000000>(11) Is there a performance hit from the compiling of the source prior to executing?</font></a></b><br>
+					<div class=faqans>
+					Yes.  This hit will only exist the first time the application is executed, or if the source file is changed.  
+					Each time thereafter, C Cod will execute the cached version of the file.
+					</div>
+					</p><hr>
+					
+					
+					<p><b><a name=q13><font color=#000000>(12) If the source is compiled and cached, then where is the binary version stored?</font></a></b><br>
+					<div class=faqans>
+					There is a directory in the user's home directory named <code>.ccod</code>.  
+					It contains various files that helps C Cod's perform.
+					This directory can be deleted at anytime to save space.
+					</div>
+					</p><hr>
+-->					
+					<p><b><a name=q14><font color=#000000>(10) Does C Cod support garbage collection?</font></a></b><br>
+					<div class=faqans>
+					No. You have the responsibility of freeing the memory you allocate.
+					</div>
+					</p><hr>
+					
+					
+					
+					
+					<p><b><a name=q15><font color=#000000>(11) I have an old C program I wrote about 10 years ago, can C Cod execute it?</font></a></b><br>
+					<div class=faqans>
+					Give it a try.
+					At the top of the original source file place...<br><br>
+					<code>
+					#!/usr/bin/ccod<br>
+					#pragma CCOD:script no<br>
+					</code>
+					<br>
+					Make the source file an executable and run it...<br><br>
+					<code>
+					$ chmod a+x myoldfile.c<br>
+					$ ./myoldfile.c<br>
+					</code>
+					</div>
+					</p>
+									<hr>
+					<center><font size=-1><i>
+						Copyright @ 2004-2008 Joshua J Baker 
+						<script language='javascript'>
+						<!--
+							var maddr = 'bak'+'ema'+'n@u'+'ser'+'s.s'+'our'+'cef'+'org'+'e.n'+'et';
+							document.write('<a href="mailto:' + maddr + '">' + maddr + '</a>');
+						-->
+						</script>
+					</i></font></center>
+	
+
+					
+					
+					
+					
+				</td>
+				<td bgcolor="#999999"><div style="width:1px"></div></td>				
+				<td bgcolor="#dddddd"><div style="width:50px;"></div></td>
+			</table>
+	</body>
+</html>

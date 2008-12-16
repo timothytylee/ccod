@@ -1,0 +1,134 @@
+#!/bin/sh
+
+####################
+# DEFAULTS
+####################
+
+PREFIX=/usr
+INCDIR=include
+BINDIR=bin
+LIBDIR=lib
+INCOUT=csp.h
+LIBOUT=libcsp.so
+EXEOUT=ccod
+LFLAGS="-shared -Wl,-soname,$LIBOUT"
+CFLAGS="-O2"
+LIBSTA="*.a"
+
+
+#echo "stripped down configure script"
+
+####################
+# ANTI NEWLINE VAR
+####################
+
+case `echo "testing\c"; echo 1,2,3`,`echo -n testing; echo 1,2,3` in
+  *c*,-n*) ECHO_N= ECHO_C='
+' ;;
+  *c*,*  ) ECHO_N=-n ECHO_C= ;;
+  *)      ECHO_N= ECHO_C='\c' ;;
+esac
+
+####################
+# HOST TYPE
+####################
+
+echo $ECHO_N "checking host system type... "
+platform=`(uname -s) 2> /dev/null`
+echo $platform
+
+####################
+# SOFTWARE PACKAGE
+####################
+
+echo $ECHO_N "checking package name... "
+hdr="ccod.c"
+if test ! -r "$hdr"; then
+  echo "ERROR: '$hdr' does not exist, or is not readable."
+  exit 1
+fi
+
+MAJOR_VERSION="`sed -n -e '/MAJOR_VERSION/s/[^0-9]*//gp' $hdr`"
+MINOR_VERSION="`sed -n -e '/MINOR_VERSION/s/[^0-9]*//gp' $hdr`"
+MICRO_VERSION="`sed -n -e '/MICRO_VERSION/s/[^0-9]*//gp' $hdr`"
+
+PACKAG="ccod-`echo $ECHO_N "$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION$ECHO_C"`"
+echo $PACKAG
+
+####################
+# MAKEFILE
+####################
+
+echo "configure: creating Makefile"
+echo $ECHO_N "" > Makefile
+
+####################
+# for MINGW
+####################
+
+if [ "`echo $platform | grep 'MINGW'`" != "" ]
+then
+	PREFIX=/mingw
+	BINDIR=bin
+	LIBDIR=bin
+	LIBOUT=libcsp.dll
+	EXEOUT=ccod.exe
+	CFLAGS="-O2"
+	LFLAGS="-shared -Wl,-soname,$LIBOUT"
+
+fi
+
+####################
+# for CYGWIN
+####################
+
+if [ "`echo $platform | grep 'CYGWIN'`" != "" ]
+then
+	BINDIR=bin
+	LIBOUT=libcsp.dll
+	EXEOUT=ccod.exe
+	CFLAGS="-O2"
+	LFLAGS="-shared -Wl,-soname,$LIBOUT"
+fi
+
+####################
+# for DARWIN
+####################
+
+if [ "`echo $platform | grep 'Darwin'`" != "" ]
+then
+	LFLAGS="-dynamiclib"
+	LIBOUT=libcsp.dylib
+	CFLAGS="-O2 -fno-common"
+fi
+
+####################
+# for LINUX
+####################
+
+if [ "`echo $platform | grep 'Linux'`" != "" ]
+then
+	:
+	#LFLAGS="-dynamiclib"
+	#LIBOUT=libcsp.dylib
+	#CFLAGS="-O2 -fno-common"
+fi
+
+
+####################
+# for EVERYONE ELSE
+####################
+
+echo "PREFIX = $PREFIX" >> Makefile
+echo "INCDIR = $INCDIR" >> Makefile
+echo "BINDIR = $BINDIR" >> Makefile
+echo "LIBDIR = $LIBDIR" >> Makefile
+echo "INCOUT = $INCOUT" >> Makefile
+echo "LIBOUT = $LIBOUT" >> Makefile
+echo "EXEOUT = $EXEOUT" >> Makefile
+echo "PACKAG = $PACKAG" >> Makefile
+echo "LFLAGS = $LFLAGS" >> Makefile
+echo "CFLAGS = $CFLAGS" >> Makefile
+echo "LIBSTA = $LIBSTA" >> Makefile
+cat Makefile.in >> Makefile
+

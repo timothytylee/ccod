@@ -1,0 +1,25 @@
+
+                             C Cod/CSP
+
+C Cod/CSP is free software.  You may copy, distribute, and modify it 
+under the terms of the License contained in the file COPYING 
+distributed with this package.  This license is the same as the 
+MIT/X Consortium license.
+
+Versions of C Cod/CSP that have an odd minor version (the middle 
+number in the release above), are development releases and should 
+be considered as beta software.  Releases with even minor version 
+numbers are intended to be production grade software.
+
+To build C Cod/CSP from a source distribution, you first run the
+configuration shell script in the top level distribution directory:
+
+        ./configure
+
+After running the configure script, the "make" command will build
+things and "make install" will install things into their proper
+location.  Note that you need to have write permission into the
+directories into which things will be installed.
+
+Documentation is available from the ./doc directory.
+The homepage for this project is http://ccod.sourceforge.net/.  

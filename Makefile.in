@@ -1,0 +1,62 @@
+
+all: $(EXEOUT) $(LIBOUT)
+
+$(EXEOUT): ccod.o
+	$(CC) $(CFLAGS) ccod.o -o $(EXEOUT)
+
+ccod.o: ccod.c
+	$(CC) $(CFLAGS) -c ccod.c
+
+$(LIBOUT): csp.o
+	$(CC) $(CFLAGS) $(LFLAGS) -o $(LIBOUT) csp.o
+
+csp.o: csp.c csp.h
+	$(CC) $(CFLAGS) -c csp.c
+
+clean:
+	rm -f $(EXEOUT) *.o *.exe *.so *.dll *.dylib *.a
+
+install: all $(PREFIX)/$(BINDIR)/$(EXEOUT) $(PREFIX)/$(LIBDIR)/$(LIBOUT) $(PREFIX)/$(INCDIR)/$(INCOUT)
+	
+$(PREFIX)/$(BINDIR)/$(EXEOUT): $(EXEOUT)
+	cp -f $(EXEOUT) $(PREFIX)/$(BINDIR)
+
+$(PREFIX)/$(LIBDIR)/$(LIBOUT): $(LIBOUT)
+	cp -f $(LIBOUT) $(PREFIX)/$(LIBDIR)
+
+$(PREFIX)/$(INCDIR)/$(INCOUT): $(INCOUT)
+	cp -f $(INCOUT) $(PREFIX)/$(INCDIR)
+
+uninstall:
+	rm -f $(PREFIX)/$(BINDIR)/$(EXEOUT)
+	rm -f $(PREFIX)/$(LIBDIR)/$(LIBOUT)
+	rm -f $(PREFIX)/$(INCDIR)/$(INCOUT)
+
+dist:	all
+	dos2unix --quiet configure MakeFile.in *.c *.h \
+		examples/csp/*.c* examples/ccod/*.c* examples/other/*.c* \
+		examples/other/adventure/*.c* examples/other/adventure/src/*.c* \
+		COPYING README doc/ccod/*.html
+	rm -rf $(PACKAG)
+	rm -rf .dist
+	mkdir .dist
+	cp README .dist
+	cp COPYING .dist
+	cp configure .dist
+	cp ccod.c .dist
+	cp csp.c .dist
+	cp csp.h .dist
+	cp -r doc .dist/doc
+	cp -r examples .dist/examples
+	cp Makefile.in .dist
+	mv .dist $(PACKAG)
+	tar cfz $(PACKAG).tar.gz $(PACKAG)
+	rm -rf $(PACKAG)
+	@echo "---------------------------------------------"
+	@echo "         $(PACKAG).tar.gz is ready			"
+	@echo "---------------------------------------------"
+
+distclean:
+	rm -f Makefile
+	rm -f $(PACKAG).tar.gz
+

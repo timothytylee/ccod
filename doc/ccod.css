@@ -1,0 +1,114 @@
+body 
+{ 
+	background-color: #eeeeee;
+	padding: 0px; margin: 0px; border: 0px;
+	font-size: 12pt; color: black; font-family: arial, sans;
+}
+			
+#navbar
+{
+	background-color:#dddddd;
+	padding:2px;
+	border:1px solid #999999;
+	margin-top:5px;
+	font-size: 12pt;
+}
+
+A
+{
+	color: #4444AA 
+}		
+		
+			
+hr
+{
+	border: 0px solid #999999;
+	height: 1px;
+	color: #999999;
+	background-color: #999999;
+}
+
+
+
+.faqans
+{
+	margin-left: 20pt;	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.ident, .codeblock
+{
+	font-family: courier new, courier, fixed;
+	font-size: 10pt;
+}
+
+.codeblock
+{
+	background-color: #dddddd;
+	border: 1px solid #999999;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.html
+{
+	ccolor: #990099;
+}
+
+.ident
+{
+	margin-left: 30px;
+
+}
+
+.comment
+{
+	color: #009900;
+	font-weight: bold;
+
+}
+
+
+.func
+{
+	i-color: #0000CC;
+	i-font-weight:bold;
+}
+
+.keyword, .kw
+{
+	color: #0000CC;
+	font-weight:bold;
+}
+
+
+.string
+{
+	color: #CC0000;
+}
+
+.prep
+{
+	color: #333333;
+	font-weight: bold;
+
+}
+
+.stag
+{
+	color:black;
+	background-color:#FFFF00;
+}
+			

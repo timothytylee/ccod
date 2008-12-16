@@ -1,0 +1,358 @@
+<html>
+	<head>
+		<title>C Cod : Documentation</title>
+		<link rel="stylesheet" type="text/css" href="ccod.css">
+		<script>
+			function openCode(id)
+			{
+				var el = document.getElementById("sc " +id);
+				if (el.style.display == 'block')
+				{
+					el.style.display = 'none';
+				}
+				else
+				{
+					el.style.display = 'block';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<table cellpadding=0 cellspacing=0 border=0 width=100% height=100%>
+			<td bgcolor="#dddddd"><div style="width:50px;"></div></td>
+			<td bgcolor="#999999"><div style="width:1px"></div></td>				
+			<td width=100% valign=top align=left style="padding:10px">
+				<center>
+					<div style="width:450px;"><font size=5><b>C Cod</b> - Documentation</font></div>
+					<div>Compile C on Demand</div>
+					<div id=navbar>
+						&nbsp;&nbsp;
+						<a href="index.html">about</a>&nbsp;&nbsp;
+						<a href="http://sourceforge.net/project/showfiles.php?group_id=116097">download</a>&nbsp;&nbsp;
+						<a href="documentation.html">documentation</a>&nbsp;&nbsp;
+						<a href="examples.html">examples</a>&nbsp;&nbsp;
+						<a href="faq.html">faq</a>&nbsp;&nbsp;
+					</div>
+				</center>
+				<p>
+				<b>Installation</b><br><br>
+				
+				Note that the configure/make combo is simpilfied.  
+				It may not work for all OS's.  
+				Help on making this more universal would be appriciated.
+				<br><br>
+				
+				
+				<b>Linux Machines:</b><br><br>
+				
+				Download the source package.
+				Extract the tarball and configure. 
+				CSP will be all ready for use.
+				<br><br>
+				
+				<code>
+				./configure<br>
+				make install<br>
+				</code>
+				<br>
+				
+				<b>Windows Machines:</b><br><br>
+				
+				Download and execute the latest setup EXE package for Win32.  
+				This will include the MingW development environment along with C Cod and CSP.  
+				IIS will be all set to use CSP.
+				
+				
+				
+				
+				
+				<!--<p><i>Because I know that windows users like installations to be GUI based;  I hope to provide a complete wizard-style installation package with precompiled binaries in the future.  Any help in this area would be greatly appriciated.</i></p>
+				
+				<p>
+				Install the <a href="http://www.mingw.org/">MingW/MSYS</a> distribution on the computer.  This provides the C compiler and libraries needed to build the C COD source files.
+				</p>
+				
+				
+				<p>If Cygwin is installed on the computer, then make sure that the Cygwin BIN directory <b>*is not*</b> in the PATH environment.  This is because some of the build commands may interfere with MingW's build commands.
+				</p>
+				
+				<p>Open the "Big M" icon on the destop.  Extract the tarball and configure.  Some UNIX with Bash experience may be required.
+				</p>
+				<code>
+				./configure<br>
+				make install<br>
+				</code>
+				
+				<p>Now that the C COD and CSP are installed, IIS will need to understand where and how to use it. 
+				</p>
+				
+				<p>
+				Allow the IUSR account needs <b>executable</b> permissions on the c:\MingW\bin folder.  
+				This is where ccod.exe, gcc.exe, g++.exe are located.  
+				<b>Warning:</b> IIS seems to handle permissions differently from one Windows version to the next.  
+				Windows 2000 was very easy, but Windows XP seemed a bit more challenging.
+				The "c:\MingW\bin" may need to be in the global system PATH environment variable.
+				</p>
+				
+				<p>
+				Now ccod.exe needs to be mapped to ".c" and ".cpp" extensions.  
+				To do so, open the IIS management applet from the Administrative Tools icon in the Control Panel.  
+				Then open the "properties" on the website.  
+				Click on the "Configuration" button from the "Home Directory" tab.
+				Under the "Mapping" tab, add a mapping.
+				The "Executable:" field should read [C:\MinGW\bin\ccod.exe "%s"].
+				The "Extension:" field shoule read ".c".
+				Click the "OK" button.
+				Add another mapping identical to the prior, but with ".cpp" in the "Extension" field.
+				</p>
+				-->
+				
+				<hr>
+				<p>
+				<b>Program Usage</b><br><br>
+				Type "<code>ccod --help</code>" to display this information.
+
+<div class='codeblock'>
+<pre>
+Usage: ccod [options] -- file [file options]
+       ccod file [file options]
+
+Options:
+  -v, --version     Display version information
+  -h, --help        Display this information
+  -c, --cc          Assigns the compiler (gcc is used as the default)
+  -x, --clean       Removes the cached program, recompiles, and runs.
+  -z, --clean-only  Removes the cached program and does not compile or run.
+  -o, --options     Compiler specific options.
+
+Examples:
+  ccod source.c foo bar       # Runs source.c.
+  ccod -c g++ -- source.cpp   # Runs source.cpp using the g++ compiler.
+  ccod -o -O2 -s -- source.c  # Runs source.c using the compiler options.
+</pre></div>
+				
+				
+				</p>
+				<hr>
+				<p>
+				<b>Pragma Options</b><br><br>
+				To add a pragma, place it near the top of the source file. Example...
+<div class='codeblock'>
+<pre>
+#!/usr/bin/ccod
+&lt;?
+#pragma CCOD:options -O2
+#pragma CCOD:library expat
+#pragma CCOD:std c89
+
+#include &lt;expat.h&gt;
+
+printf("RAD\n");
+?&gt;
+</pre>
+</div>
+Pragmas can also defined as a comment style... <code>//@pragma CCOD:std c89</code><br>
+
+
+
+
+					<br><b>Complete List of Options</b>
+					<table cellpadding=6 border=0 class=codeblock>
+					<tr>
+						<td nowrap valign=top><li>CCOD:compiler</td>
+						<td>
+						Choose the compiler application to use to compile the source file. 
+						<nobr><i>(default : gcc)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:csp</td>
+						<td>
+						Expose script to CSP interface.
+						<nobr><i>[yes/no] (default : no)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:directory</td>
+						<td>
+						Set the default directory to execute the source file in.
+						</td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:ignoreUploadError</td>
+						<td>
+						Ignore errors relating to file uploads for CSP scripts.
+						<nobr><i>[yes/no] (default : no)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:library</td>
+						<td>
+						Link a shared or static library.
+						</td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:options</td>
+						<td>
+						Adds custom compiler options to the existing options.
+						<nobr><i>(default : -I. -w -s)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:recompile</td>
+						<td>
+						Always recompile the source prior to executing.
+						<nobr><i>[yes/no] (default : no)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:script</td>
+						<td>
+						Maximum number of bytes allowed to be sent to a CSP page before displaying an error. 
+						<nobr><i>[number] (default : 50KB)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:sessions</td>
+						<td>
+						Turn CSP Session on or off
+						<nobr><i>[yes/no] (default : yes)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:source</td>
+						<td>
+						Add a source file.
+						</td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:std</td>
+						<td>
+						Choose what standard of C is used.  Check your GNU C documentation for more information.
+						<nobr><i>(default : c99)</i></nobr></td>
+					</tr>
+					<tr>
+						<td nowrap valign=top><li>CCOD:upload</td>
+						<td>
+						Maximum number of bytes allowed to be sent to a CSP page before displaying an error. 
+						<nobr><i>[number] (default : 50KB)</i></nobr></td>
+					</tr>
+					</table>
+				</p>
+				<hr>
+				<p>
+				<b>CSP Functions</b><br><br>
+				
+<div class=codeblock><pre><b>[Response Object]</b>
+Response.SetBuffer(int);
+Response.GetBuffer();
+Response.SetContentType(const char *contype);
+Response.GetContentType();
+Response.SetStatus(const char *status);
+Response.GetStatus();
+Response.AddHeader(const char *header, const char *value);
+Response.Flush();
+Response.Write(const char *fmt, ...);
+Response.Clear();
+Response.End();
+Response.Redirect(const char *location);
+Response.BinaryWrite(const unsigned char *buf, int bufsize);
+
+<b>[Response.Cookies Object]</b>
+Response.Cookies.Set(const char *key, const char *value);
+Response.Cookies.Get(const char *key);
+Response.Cookies.Exists(const char *key);		
+Response.Cookies.GetHasKeys(const char *key);
+Response.Cookies.SetKey(const char *key, const char *skey, const char *value);
+Response.Cookies.GetKey(const char *key, const char *skey);
+Response.Cookies.SetExpires(const char *key, time_t date);
+Response.Cookies.GetExpires(const char *key);
+Response.Cookies.SetDomain(const char *key, const char *domain);
+Response.Cookies.GetDomain(const char *key);
+Response.Cookies.SetPath(const char *key, const char *path);
+Response.Cookies.GetPath(const char *key);
+Response.Cookies.SetSecure(const char *key, int secure);
+Response.Cookies.GetSecure(const char *key);
+
+<b>[Request Object]</b>
+Request.GetTotalBytes();
+Request.BinaryRead(void *buf, int size);
+Request.Get(const char *key);
+Request.Exists(const char *key);
+
+<b>[Request.QueryString Object]</b>
+Request.QueryString.Count;
+Request.QueryString.Get(const char *key);
+Request.QueryString.Key(int index);
+Request.QueryString.Value(int index);
+Request.QueryString.Exists(const char *key);
+
+<b>[Request.Form Object]</b>
+Request.Form.Count;
+Request.Form.Get(const char *key);
+Request.Form.Key(int index);
+Request.Form.Value(int index);
+Request.Form.Exists(const char *key);
+
+<b>[Request.ServerVariables Object]</b>
+Request.ServerVariables.GetCount();
+Request.ServerVariables.Count;
+Request.ServerVariables.Get(const char *key);
+Request.ServerVariables.Key(int index);
+Request.ServerVariables.Value(int index);
+Request.ServerVariables.Exists(const char *key);
+
+<b>[Request.Cookies Object]</b>
+Request.Cookies.Get(const char *key);
+Request.Cookies.Exists(const char *key);		
+Request.Cookies.GetHasKeys(const char *key);
+Request.Cookies.GetKey(const char *key, const char *skey);
+
+<b>[Server Object]</b>
+Server.URLEncode(const char *str);
+Server.HTMLEncode(const char *str);
+Server.MapPath(const char *str);
+Server.GetScriptTimeout();
+Server.SetScriptTimeout(int NumSeconds);
+
+<b>[Session Object]</b>
+Session.Abandon();
+Session.SetTimeout(int minutes);
+Session.GetTimeout();
+Session.GetSessionID();
+Session.GetCount();
+Session.Get(const char *key);
+Session.Set(const char *key, const char *value);
+Session.Key(int index);
+Session.Value(int index);
+Session.Exists(const char *key);
+Session.Remove(const char *key);
+Session.RemoveAll();
+
+<b>[Session.Contents Object]</b>
+Session.Contents.GetCount();
+Session.Contents.Get(const char *key);
+Session.Contents.Set(const char *key, const char *value);
+Session.Contents.Key(int index);
+Session.Contents.Value(int index);
+Session.Contents.Exists(const char *key);
+Session.Contents.Remove(const char *key);
+Session.Contents.RemoveAll();
+</pre>
+</div>
+
+				
+				
+				</p>				
+		        					<hr>
+					<center><font size=-1><i>
+						Copyright @ 2004-2008 Joshua J Baker 
+						<script language='javascript'>
+						<!--
+							var maddr = 'bak'+'ema'+'n@u'+'ser'+'s.s'+'our'+'cef'+'org'+'e.n'+'et';
+							document.write('<a href="mailto:' + maddr + '">' + maddr + '</a>');
+						-->
+						</script>
+					</i></font></center>
+
+		
+				
+			</td>
+			<td bgcolor="#999999"><div style="width:1px"></div></td>				
+			<td bgcolor="#dddddd"><div style="width:50px;"></div></td>
+		</table>
+	</body>
+</html>

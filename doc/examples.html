@@ -1,0 +1,656 @@
+<html>
+	<head>
+		<title>C Cod : Examples</title>
+		<link rel="stylesheet" type="text/css" href="ccod.css">
+		<script>
+			function openCode(id)
+			{
+				var el = document.getElementById("sc " +id);
+				if (el.style.display == 'block')
+				{
+					el.style.display = 'none';
+				}
+				else
+				{
+					el.style.display = 'block';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<table cellpadding=0 cellspacing=0 border=0 width=100% height=100%>
+			<td bgcolor="#dddddd"><div style="width:50px;"></div></td>
+			<td bgcolor="#999999"><div style="width:1px"></div></td>				
+			<td width=100% valign=top align=left style="padding:10px">
+				<center>
+					<div style="width:450px;"><font size=5><b>C Cod</b> - Examples</font></div>
+					<div>Compile C on Demand</div>
+					<div id=navbar>
+							&nbsp;&nbsp;
+							<a href="index.html">about</a>&nbsp;&nbsp;
+							<a href="http://sourceforge.net/project/showfiles.php?group_id=116097">download</a>&nbsp;&nbsp;
+							<a href="documentation.html">documentation</a>&nbsp;&nbsp;
+							<a href="examples.html">examples</a>&nbsp;&nbsp;
+							<a href="faq.html">faq</a>&nbsp;&nbsp;
+					</div>
+				</center>
+
+					<p>
+					The purpose of this page is to demonstrate different uses
+					of <b>C Cod</b> and <b>CSP</b> through examples.  Please 
+					browse the various snippets below.  Anything you can do with 
+					in ANSI/C99 C you can do with C Cod.<br />As of version 1.0 Objective-C is fully supported.
+					</p>
+					<hr>
+
+					<nobr>
+					<p>
+					<b>C Cod Examples</b><br>
+					
+<!--Hello World-->					
+					<li><a href="javascript:openCode('Hello World')">Hello World</a></li>
+					<div id="sc Hello World" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>Hello World (hello.c)<br>The simple hello world example.<br>*/</span><br>
+								<span class='func'>printf</span>(<span class='string'>"Hello World\n"</span>);
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					
+					
+<!--Loops-->
+					<li><a href="javascript:openCode('Loops')">Loops</a></li>
+					<div id="sc Loops" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>For Loop (loop1.c)<br>Works with all c/c++ compilers.<br>*/</span><br>
+								<span class='kw'>int</span> i;<br>
+								<span class='kw'>for</span> (i=0;i<25;i++)<br>
+								{
+								<div class='ident'>
+									printf(<span class='string'>"Count %i\n"</span>, i);
+								</div>							
+								}
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>For Loop (loop2.c)<br>Works with c99/c++ compilers.<br>*/</span><br>
+								<span class='kw'>for</span> (<span class='kw'>int</span> i=0;i<25;i++)<br>
+								{
+								<div class='ident'>
+									printf(<span class='string'>"Count %i\n"</span>, i);
+								</div>							
+								}
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>Do/While Loop (loop3.c)<br>*/</span><br>
+								<span class='kw'>int</span> i = 0;<br>
+								<span class='kw'>do</span><br>
+								{
+								<div class='ident'>
+									printf(<span class='string'>"Count %i\n"</span>, i);<br>
+									i++;
+								</div>							
+								} <span class='kw'>while</span> (i<25)
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+
+
+						<p></p>
+					</div>
+					
+<!--Inline Text-->					
+					<li><a href="javascript:openCode('Inline Text')">Inline Text</a></li>
+					<div id="sc Inline Text" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>Inline Text (inline.c)<br>Any text outside a script tag will be printed to stdout.<br>*/</span><br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							Hello World
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+
+<!--Non-Script Mode-->
+					<li><a href="javascript:openCode('Non-Script Mode')">Non-Script Mode</a></li>
+					<div id="sc Non-Script Mode" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='prep'><span class='kw'>#pragma</span> CCOD:script no</span><br>
+							<br>							
+							<span class='comment'>
+							/*<br>
+							Non-Script Mode (nonscript.c)<br>
+							<br>
+							Adding the CCOD:script pragma allows for development of<br>
+							a standard style c application &nbsp;without the script tags.<br>
+							*/</span><br>
+							<br>
+							<span class='kw'>int</span> main()<br>
+							{<br>
+							<div class='ident'>
+							
+								printf(<span class='string'>"Non-Script Example.\n"</span>);<br>
+								<span class='kw'>return</span> 0;<br>
+							</div>
+							}<br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+					
+<!--Header Section-->					
+					<li><a href="javascript:openCode('Header Section')">Header Section</a></li>
+					<div id="sc Header Section" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<div class='identd'>
+								<span class='stag'>&lt;?#</span><br>
+								<span class='comment'>
+								/*<br>
+									Header Section (hsect.cpp) <br><br>
+									Header sections are applied to the global space of<br>
+									the	source file. They are used to define variables<br>
+									and	classes	that cannot defined in the local space.<br>
+									Very useful for &nbsp;c++ source files &nbsp;and source file<br>
+									with complex library/include configurations.<br>
+								*/
+								</span><br>
+								<br>
+								
+								<span class='kw'>#pragma</span> CCOD:library expat<br>
+								<span class='kw'>#include</span> &lt;expat.h&gt;<br>
+								<br>
+								
+								<span class='kw'>class</span> MyClass<br>
+								{
+									<div class='ident'>
+										<span class='kw'>int</span> i;
+									</div>
+								};
+								<br><br>
+							</div>
+							<span class='stag'>#?&gt;</span>
+							<br>
+							
+							
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								MyClass mcls;<br>
+								<span class='func'>printf</span>(<span class='string'>"Header Section Example\n"</span>);
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					
+					
+<!--Inline Functions-->					
+					<li><a href="javascript:openCode('Inline Functions')">Inline Functions</a></li>
+					<div id="sc Inline Functions" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>
+									Inline Functions (infunc.c)<br>
+									<br>
+									Inline/nested functions is a feature provided by<br>
+									the GNU C compiler. Therefore, it is important to<br>
+									note that GNU C++ and a few Non-GNU C compilers<br>
+									*may not* support inline functions. For	these<br>
+									compilers the functions must be defined in the<br>
+									"Header Section" of the source file.<br>
+								*/</span><br>
+								<br>
+								<span class='func'>printf</span>(<span class='string'>"Inline Function Example\n"</span>);<br>
+								<br>
+								<span class='kw'>int</span> whatisawren()<br>
+								{<br>
+								<div class='ident'>
+									printf(<span class='string'>"A Bird.\n"</span>);
+								</div>
+								}<br>
+								<br>
+								printf(<span class='string'>"What is a Wren?\n"</span>);<br>
+								whatisawren();<br>
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+					
+<!--C++ and Classes-->					
+					<li><a href="javascript:openCode('C++ and Classes')">C++ and Classes</a></li>
+					<div id="sc C++ and Classes" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?#</span><br>
+							
+							<span class='comment'>/*<br>
+								C++ and Classes (cppex.cpp)<br>
+								<br>
+								Simple C++ example using a namespace, class, new/delete, and<br>
+								cout.  Notice the class and includes are contained within a<br>
+								header section.<br>
+							*/</span><br>
+							<span class='kw'>#include</span> &lt;iostream&gt;<br>
+							<span class='kw'>#include</span> &lt;stdio.h&gt;<br>
+							<br>
+							<span class='kw'>using namespace</span> std;<br>
+							<br>
+							<span class='kw'>class</span> MyLilClass<br>
+							{<br>
+							<span class='kw'>public:</span><br>
+							<div class='ident'>	
+								
+								<span class='kw'>char</span> name[50];<br>
+								<span class='kw'>int</span> age;<br>
+							</div>
+							};<br>
+							
+							<span class='stag'>#?&gt;</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								MyLilClass *iam = <span class='kw'>new</span> MyLilClass();<br>
+								<br>
+								sprintf(iam->name, <span class='string'>"John Denton"</span>);<br>
+								iam->age = 46;<br>
+								<br>
+								cout << <span class='string'>"Hi my name is "</span> << iam->name << <span class='string'>"."</span> << endl;<br>
+								cout << <span class='string'>"I'm "</span> << iam->age << <span class='string'>" years old."</span> << endl;<br>
+								<br>
+								<span class='kw'>delete</span> iam;<br>
+								
+								<span class='kw'>return</span> 0;<br>
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+
+<!--C++ and Classes-->					
+					<li><a href="javascript:openCode('Objective-C')">Objective-C</a></li>
+					<div id="sc Objective-C" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?#</span><br>
+							<span class='comment'>/*<br>
+								Hello World (hello.m)<br>
+								The simple hello world example in Objective-C<br>
+							*/</span><br>
+							<span class='kw'>@interface</span> HelloWorld : NSObject<br>
+							{<br>
+							sadfasd
+							}<br>
+							<span class='kw'>@end</span><br>
+							<br>
+							<span class='kw'>@implementation</span> HelloWorld<br>
+							<br>
+							- (<span class='kw'>void</span>)hello<br>
+							{<br>
+							<div class='ident'>
+								<span class='kw'>printf</span>(<span class='string'>"Hello World\n"</span>);<br>
+							</div>
+							}<br>
+							<span class='kw'>@end</span><br>
+							<span class='stag'>#?&gt;</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								HelloWorld *hw = [[HelloWorld <span class='kw'>alloc</span>] <span class='kw'>init</span>];<br>
+								[hw hello];<br>
+							</div>
+							<span class='stag'>?&gt;</span>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+
+					<!--<li>Shebang-->
+					
+					
+					
+<!--Gotos-->					
+					<li><a href="javascript:openCode('Gotos')">Gotos</a> <i>(Wheeeee!)</i></li>
+					<div id="sc Gotos" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='comment'>/*<br>
+									Gotos (gotos.c)<br>
+									<br>
+									The forbidden fruit.<br>
+								*/</span><br>
+							
+							
+								<span class='kw'>goto</span> l__movefar;<br>
+							</div>
+							l__moveclose:<br>
+							<div class='ident'>
+								<span class='func'>printf</span>(<span class='string'>"Now I am here.\n"</span>);<br>
+								<span class='kw'>return</span> 0;
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							This is some inline text that will never be reached!<br>
+							<span class='stag'>&lt;?</span><br>
+							l__movefar:<br>
+							<div class='ident'>
+								<span class='func'>printf</span>(<span class='string'>"Here I am.\n"</span>);<br>
+								<span class='kw'>goto</span> l__moveclose;<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					</p>
+					<hr>
+					
+					
+					
+					<p>	
+					<b>CSP Examples</b><br>
+<!--Page Redirection-->					
+					<li><a href="javascript:openCode('Page Redirection')">Page Redirection</a></li>
+					<div id="sc Page Redirection" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								Response.Redirect(<span class='string'>"http://www.google.com"</span>);<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					
+<!--Server Variables-->					
+					<li><a href="javascript:openCode('Server Variables')">Print Server Variables</a></li>
+					<div id="sc Server Variables" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='html'>&lt;table border=1&gt;</span><br>
+							<span class='stag'>&lt;?</span>
+							
+							<div class='ident'>
+								<span class='kw'>for</span> (<span class='kw'>int</span> i=0;i&lt;Request.ServerVariables.length;i++)<br>
+								{<br>
+								<div class='ident'>
+									<span class='stag'>?&gt;</span><span class='html'>&lt;tr&gt;</span><span class='stag'>&lt;?</span><br>
+									Response.Write(<span class='string'>"&lt;td&gt;%s&lt;/td&gt;"</span>, Request.ServerVariables.Key(i));<br>
+									Response.Write(<span class='string'>"&lt;td&gt;%s&lt;/td&gt;"</span>, Request.ServerVariables.Value(i));<br>
+									<span class='stag'>?&gt;</span><span class='html'>&lt;/tr&gt;</span><span class='stag'>&lt;?</span><br>
+								</div>
+								}<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							<span class='html'>&lt;/table&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+<!--Output Buffering-->					
+					<li><a href="javascript:openCode('Output Buffering')">Output Buffering</a></li>
+					<div id="sc Output Buffering" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								Response.Write(<span class='string'>"This is text that will never appear "</span>);<br>
+								Response.Write(<span class='string'>"because the buffer that holds it is cleared.&lt;br&gt;"</span>);<br>
+								<br>
+								Response.Clear();<br>
+								<br>
+								Response.Write(<span class='string'>"Now this text is real!.&lt;br&gt;"</span>);<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+<!--SSI Includes-->					
+					<li><a href="javascript:openCode('SSI Includes')">SSI Includes</a></li>
+					<div id="sc SSI Includes" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							&lt;!--#include file="myfile.inc"--&gt;<br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					
+					
+<!--Forms-->					
+					<li><a href="javascript:openCode('Forms')">Forms</a></li>
+					<div id="sc Forms" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<br>
+							<span class='comment'>&lt;!-- File: form.c --&gt;</span><br>
+							<br>
+							&lt;form action=result.c method=POST&gt;<br>
+								Field 1: &lt;input type="text" name="field_1"&gt;&lt;br&gt;<br>
+								Field 2: &lt;input type="text" name="field_2"&gt;&lt;br&gt;<br>
+								&lt;input type=submit value="Submit Form"&gt;&lt;br&gt;<br>
+							&lt;/form&gt;<br>
+							</code>
+						</div>
+						
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<br>
+							<span class='comment'>&lt;!-- File: result.c --&gt;</span><br>
+							<br>
+							<span class='stag'>&lt;?</span><br>
+								Response.Write(<span class='string'>"Field 1: %s&lt;br&gt;&lt;br&gt;"</span>, Request.Form.Get(<span class='string'>"field_1"</span>));<br>
+								Response.Write(<span class='string'>"&lt;b&gt;All Fields Dumped&lt;/b&gt;&lt;br&gt;"</span>);<br>
+								<span class='kw'>for</span> (<span class='kw'>int</span> i=0;i&lt;Request.Form.Count;i++)<br>
+								{<br>
+								<div class='ident'>
+									Response.Write(<span class='string'>"%s: %s&lt;br&gt;"</span>, Request.Form.Key(i), Request.Form.Value(i));<br>
+								</div>
+								}<br>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						
+						
+						<p></p>
+					</div>
+					
+<!--File uploads-->					
+					<li><a href="javascript:openCode('File uploads')">File uploads</a></li>
+					<div id="sc File uploads" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<br>
+							<span class='comment'>&lt;!-- File: form.c --&gt;</span><br>
+							<br>
+							&lt;form action=result.c method=POST ENCTYPE="multipart/form-data"&gt;<br>
+								Field 1: &lt;input type="text" name="field_1"&gt;&lt;br&gt;<br>
+								Field 2: &lt;input type="text" name="field_2"&gt;&lt;br&gt;<br>
+								File 1: &lt;input type="file" name="file_1"&gt;&lt;br&gt;<br>
+								File 2: &lt;input type="file" name="file_2"&gt;&lt;br&gt;<br>
+								&lt;input type=submit value="Submit Form"&gt;&lt;br&gt;<br>
+							&lt;/form&gt;<br>
+							</code>
+						</div>
+						
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<br>
+							<span class='comment'>&lt;!-- File: result.c --&gt;</span><br>
+							<br>
+							<span class='stag'>&lt;?</span><br>
+								Response.Write(<span class='string'>"Field 1: %s&lt;br&gt;&lt;br&gt;"</span>, Request.Form.Get(<span class='string'>"field_1"</span>));<br>
+								Response.Write(<span class='string'>"&lt;b&gt;All Fields Dumped&lt;/b&gt;&lt;br&gt;"</span>);<br>
+								<span class='kw'>for</span> (<span class='kw'>int</span> i=0;i&lt;Request.Form.Count;i++)<br>
+								{<br>
+								<div class='ident'>
+									Response.Write(<span class='string'>"%s: %s&lt;br&gt;"</span>, Request.Form.Key(i), Request.Form.Value(i));<br>
+								</div>
+								}<br>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						
+						
+						<p></p>
+					</div>
+					
+					
+<!--Session Variables-->					
+					<li><a href="javascript:openCode('Session Variables')">Session Variables</a></li>
+					<div id="sc Session Variables" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								Response.Write(<span class='string'>"Var1 : [%s]&lt;br&gt;"</span>, Session.Get("Var1"));<br>
+								Session.Set(<span class='string'>"Var1"</span>, <span class='string'>"MyVal"</span>);<br>
+								Response.Write(<span class='string'>"Var1 : [%s]&lt;br&gt;"</span>, Session.Get("Var1"));<br>
+								Session.Abandon();<br>
+								Response.Write(<span class='string'>"Var1 : [%s]&lt;br&gt;"</span>, Session.Get("Var1"));<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					
+
+<!--Cookies-->					
+					<li><a href="javascript:openCode('Cookies')">Cookies</a></li>
+					<div id="sc Cookies" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								Response.Write(<span class='string'>"Var1 : [%s]&lt;br&gt;"</span>, Request.Cookies.Get("Var1"));<br>
+								Response.Cookies.Set(<span class='string'>"Var1"</span>, <span class='string'>"MyVal"</span>);<br>
+								Response.Write(<span class='string'>"Var1 : [%s]&lt;br&gt;"</span>, Request.Cookies.Get("Var1"));<br>
+								Response.Cookies.Set(<span class='string'>"Var1"</span>, <span class='string'>""</span>);<br>
+								Response.Write(<span class='string'>"Var1 : [%s]&lt;br&gt;"</span>,  Request.Cookies.Get("Var1"));<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+					
+<!--Display Binary Data-->					
+					<li><a href="javascript:openCode('Display Binary Data')">Display Binary Data</a></li>
+					<div id="sc Display Binary Data" style='display:none;'>
+						<div class='codeblock'>
+							<code>
+							<span class='prep'>#!/usr/bin/ccod</span><br>
+							<span class='stag'>&lt;?</span>
+							<div class='ident'>
+								<span class='kw'>unsigned char</span> csppng[207] = {<br>
+									<div class='ident'>
+										0x89,0x50,0x4E,0x47,0x0D,0x0A,0x1A,0x0A,0x00,0x00,0x00,0x0D,0x49,<br>
+										0x48,0x44,0x52,0x00,0x00,0x00,0x20,0x00,0x00,0x00,0x13,0x08,0x03,<br>
+										0x00,0x00,0x00,0xC6,0x4A,0xFF,0xC5,0x00,0x00,0x00,0x04,0x67,0x41,<br>
+										0x4D,0x41,0x00,0x00,0xAF,0xC8,0x37,0x05,0x8A,0xE9,0x00,0x00,0x00,<br>
+										0x19,0x74,0x45,0x58,0x74,0x53,0x6F,0x66,0x74,0x77,0x61,0x72,0x65,<br>
+										0x00,0x41,0x64,0x6F,0x62,0x65,0x20,0x49,0x6D,0x61,0x67,0x65,0x52,<br>
+										0x65,0x61,0x64,0x79,0x71,0xC9,0x65,0x3C,0x00,0x00,0x00,0x06,0x50,<br>
+										0x4C,0x54,0x45,0x15,0x3C,0x35,0xFF,0xFF,0xE0,0xD8,0xEE,0x5C,0x14,<br>
+										0x00,0x00,0x00,0x4F,0x49,0x44,0x41,0x54,0x78,0xDA,0xAC,0x91,0x41,<br>
+										0x0A,0x00,0x20,0x08,0x04,0x77,0xFF,0xFF,0xE9,0xA8,0x48,0xD3,0x22,<br>
+										0xA9,0xF4,0x10,0x63,0xCC,0x61,0x55,0x30,0x28,0xA4,0x08,0xA8,0xD5,<br>
+										0x3B,0x4B,0xE8,0x02,0xB4,0x11,0x52,0x6C,0x02,0x97,0x47,0x71,0x08,<br>
+										0x94,0xDF,0x09,0x5F,0x04,0x17,0xD2,0x0B,0xF4,0x21,0xE9,0x05,0xDA,<br>
+										0x90,0xBC,0x11,0xB6,0x63,0xF2,0xB8,0xA8,0x70,0xD5,0xA9,0xD7,0xFC,<br>
+										0x13,0x8A,0x00,0x03,0x00,0x29,0x98,0x01,0xD1,0xDA,0x7F,0x3C,0x6C,<br>
+										0x00,0x00,0x00,0x00,0x49,0x45,0x4E,0x44,0xAE,0x42,0x60,0x82,<br>
+									</div>
+								    } ;<br>
+								Response.SetContentType(<span class='string'>"image/png"</span>);<br>
+								Response.BinaryWrite(csppng, <span class='kw'>sizeof</span>(csppng));<br>
+							</div>
+							<span class='stag'>?&gt;</span><br>
+							</code>
+						</div>
+						<p></p>
+					</div>
+
+					</p>
+					</nobr>
+					<hr>
+					<center><font size=-1><i>
+						Copyright @ 2004-2008 Joshua J Baker 
+						<script language='javascript'>
+						<!--
+							var maddr = 'bak'+'ema'+'n@u'+'ser'+'s.s'+'our'+'cef'+'org'+'e.n'+'et';
+							document.write('<a href="mailto:' + maddr + '">' + maddr + '</a>');
+						-->
+						</script>
+					</i></font></center>
+
+				</td>
+				<td bgcolor="#999999"><div style="width:1px"></div></td>				
+				<td bgcolor="#dddddd"><div style="width:50px;"></div></td>
+			</table>
+	</body>
+</html>
