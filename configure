@@ -12,7 +12,7 @@ INCOUT=csp.h
 LIBOUT=libcsp.so
 EXEOUT=ccod
 LFLAGS="-shared -Wl,-soname,$LIBOUT"
-CFLAGS="-O2"
+CFLAGS="-O2 -fPIC"
 LIBSTA="*.a"
 
 
@@ -73,7 +73,7 @@ then
 	LIBDIR=bin
 	LIBOUT=libcsp.dll
 	EXEOUT=ccod.exe
-	CFLAGS="-O2"
+	CFLAGS="-O2 -fPIC"
 	LFLAGS="-shared -Wl,-soname,$LIBOUT"
 
 fi
@@ -87,7 +87,7 @@ then
 	BINDIR=bin
 	LIBOUT=libcsp.dll
 	EXEOUT=ccod.exe
-	CFLAGS="-O2"
+	CFLAGS="-O2 -fPIC"
 	LFLAGS="-shared -Wl,-soname,$LIBOUT"
 fi
 
@@ -99,7 +99,7 @@ if [ "`echo $platform | grep 'Darwin'`" != "" ]
 then
 	LFLAGS="-dynamiclib"
 	LIBOUT=libcsp.dylib
-	CFLAGS="-O2 -fno-common"
+	CFLAGS="-O2 -fno-common -fPIC"
 fi
 
 ####################
@@ -111,7 +111,7 @@ then
 	:
 	#LFLAGS="-dynamiclib"
 	#LIBOUT=libcsp.dylib
-	#CFLAGS="-O2 -fno-common"
+	#CFLAGS="-O2 -fPIC"
 fi
 
 

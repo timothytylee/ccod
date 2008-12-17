@@ -5,7 +5,7 @@
 
 #define CCOD_MAJOR_VERSION 1
 #define CCOD_MINOR_VERSION 2
-#define CCOD_MICRO_VERSION 8
+#define CCOD_MICRO_VERSION 9
 
 #include <stdlib.h>
 #include <string.h>
@@ -1285,7 +1285,7 @@ static unsigned long crctab[] = {
 static unsigned long 
 cksum(const unsigned char *path)
 {
-	register unsigned long  i, c, s = 0;
+	register unsigned int i, c, s = 0;
 	size_t n;
 	FILE *f;
 	if (directory_exists((char*)path)) return 0;
@@ -1302,7 +1302,7 @@ cksum(const unsigned char *path)
 	}
 	for (i = n; i > 0; --i) 
 	{
-		c = (unsigned)getc(f);
+		c = (unsigned int)getc(f);
 		s = (s << 8) ^ crctab[(s >> 24) ^ c];
 	}
 	/* Extend with the length of the string. */
@@ -1319,10 +1319,10 @@ cksum(const unsigned char *path)
 static unsigned long
 cksumbin(const unsigned char *bin, size_t n)
 {
-	register unsigned   i, c, s = 0;
+	register unsigned int i, c, s = 0;
 	for (i = n; i > 0; --i) 
 	{
-		c = (unsigned)*(bin++);
+		c = (unsigned int)*(bin++);
 		s = (s << 8) ^ crctab[(s >> 24) ^ c];
 	}
 	/* Extend with the length of the string. */
