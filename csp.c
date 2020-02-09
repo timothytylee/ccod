@@ -1551,7 +1551,7 @@ static void initservervariables()
 #endif
 
 
-	setlist = (char*)malloc(strlen(setlistt)+strlen(defaultlist)+1);
+	setlist = (char*)malloc(strlen(setlistt)+strlen(defaultlist)+2);
 	if (!setlist) errFINAL_oom();
 	sprintf(setlist, "%s\n%s", defaultlist, setlistt);
 	free(setlistt);
