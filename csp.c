@@ -136,6 +136,7 @@ static int sessionsenabled = 0;
 static int
 dyn_vsnprintf(char **ret, const char *fmt, va_list ap)
 {
+	va_list tmp_ap;
 	char *buf = 0, *newbuf;
 	size_t nextsize = 0, bufsize;
 	int outsize;
@@ -163,7 +164,9 @@ dyn_vsnprintf(char **ret, const char *fmt, va_list ap)
 			*ret = 0;
 			return -1;
 		}
-		outsize = vsnprintf(buf, bufsize, fmt, ap);
+		va_copy(tmp_ap, ap);
+		outsize = vsnprintf(buf, bufsize, fmt, tmp_ap);
+		va_end(tmp_ap);
 		if ((outsize == -1)||(outsize == bufsize)||(outsize == bufsize - 1))
 		{
 			nextsize = bufsize * 2;
